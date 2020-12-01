@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const helmet = require('helmet')
 const cors = require('cors')
 const app = express();
 require('dotenv').config()
@@ -11,6 +12,7 @@ mongoose.connect(process.env.MONGO_URI,{useNewUrlParser: true, useUnifiedTopolog
 
 //Middlewares
 app.use(cors())
+app.use(helmet())
 
 //Routes
 app.get('/', (req,res) => {

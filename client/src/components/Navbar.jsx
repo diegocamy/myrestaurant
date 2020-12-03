@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 const NavContainer = styled.div`
@@ -11,6 +11,11 @@ const NavContainer = styled.div`
 
   .logo {
     font-size: 1.2rem;
+
+    a {
+      text-decoration: none;
+      color: white;
+    }
     span {
       font-weight: lighter;
       font-size: 1.3rem;
@@ -46,6 +51,10 @@ const NavContainer = styled.div`
     display: none;
   }
 
+  .hamburger-links {
+    display: none;
+  }
+
   .active {
     background-color: rgba(255, 255, 255, 0.4);
   }
@@ -65,6 +74,7 @@ const NavContainer = styled.div`
     }
 
     .hamburger-links {
+      display: block;
       position: absolute;
       top: 55px;
       width: 100vw;
@@ -107,14 +117,20 @@ const NavContainer = styled.div`
   }
 `;
 
-const Navbar = (props) => {
-  console.log(props);
+const Navbar = ({ location: { pathname } }) => {
   const [isShowingLinks, setIsShowingLinks] = useState(false);
+
+  useEffect(() => {
+    setIsShowingLinks(false);
+  }, [pathname]);
+
   return (
     <NavContainer>
       <div className="logo">
         <h2>
-          <span>my</span>restaurant
+          <Link to="/">
+            <span>my</span>restaurant
+          </Link>
         </h2>
       </div>
       <div className="navLinks">
@@ -171,4 +187,4 @@ const Navbar = (props) => {
   );
 };
 
-export default Navbar;
+export default withRouter(Navbar);

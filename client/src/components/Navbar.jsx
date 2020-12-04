@@ -22,9 +22,31 @@ const NavContainer = styled.div`
     }
   }
 
-  .navLinks {
+  .cart {
     margin-left: auto;
+    margin-right: 15px;
 
+    i {
+      font-size: 1.3rem;
+    }
+    .number {
+      position: absolute;
+      background-color: yellow;
+      border-radius: 50%;
+      top: 3%;
+      margin-left: 13px;
+      padding: 3px 7px;
+      p {
+        color: black;
+        font-size: 0.7rem;
+      }
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .navLinks {
     ul {
       display: flex;
       list-style: none;
@@ -66,7 +88,7 @@ const NavContainer = styled.div`
 
     .hamburger {
       display: block;
-      margin-left: auto;
+      margin-left: 10px;
 
       &:hover {
         cursor: pointer;
@@ -133,16 +155,22 @@ const Navbar = ({ location: { pathname } }) => {
           </Link>
         </h2>
       </div>
+      <div className="cart">
+        <i className="fas fa-shopping-cart"></i>
+        <div className="number">
+          <p>3</p>
+        </div>
+      </div>
       <div className="navLinks">
         <ul>
           <li>
             <NavLink to="/products" activeClassName="active">
-              Products
+              Menu
             </NavLink>
           </li>
           <li>
-            <NavLink to="/cart" activeClassName="active">
-              Cart
+            <NavLink to="/about" activeClassName="active">
+              About
             </NavLink>
           </li>
           <li>
@@ -162,12 +190,12 @@ const Navbar = ({ location: { pathname } }) => {
         <ul>
           <li>
             <NavLink to="/products" activeClassName="active">
-              Products
+              Menu
             </NavLink>
           </li>
           <li>
-            <NavLink to="/cart" activeClassName="active">
-              Cart
+            <NavLink to="/about" activeClassName="active">
+              About
             </NavLink>
           </li>
           <li>

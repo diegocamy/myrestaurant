@@ -106,6 +106,7 @@ const NavContainer = styled.div`
       background-color: crimson;
       transition: all 200ms ease-in-out;
       text-align: center;
+      z-index: 99;
 
       ul {
         list-style: none;

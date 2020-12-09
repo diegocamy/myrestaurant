@@ -4,6 +4,7 @@ import SwiperCore, { Autoplay, Pagination } from "swiper";
 import styled from "styled-components";
 
 import BigSlide from "../components/BigSlide";
+import FeaturedFoods from "../components/FeaturedFoods";
 
 import pizza from "../assets/slides/pizza.jpg";
 import burger from "../assets/slides/burger.jpg";
@@ -61,7 +62,7 @@ const Home = () => {
           />
         </SwiperSlide>
       </Swiper>
-      HOME PAGE BRO
+      <FeaturedFoods />
     </HomePage>
   );
 };

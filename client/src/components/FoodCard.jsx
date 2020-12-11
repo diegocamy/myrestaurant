@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { addToCart } from "../redux/cart/cartActions";
 
 import { ReactComponent as CurveSVG } from "../assets/svg/wave.svg";
 
@@ -102,13 +104,14 @@ const Card = styled.div`
   }
 `;
 
-const FoodCard = ({ id, name, picture, regular_price, sale_price }) => {
+const FoodCard = ({ item, addToCart }) => {
+  const { id, picture, name, sale_price, regular_price } = item;
   return (
     <Card className="shadow">
       <div className="top">
         <img src={picture} alt={name} />
         <CurveSVG className="curve" />
-        <i className="fas fa-shopping-cart"></i>
+        <i className="fas fa-shopping-cart" onClick={() => addToCart(item)}></i>
       </div>
       <div className="bottom">
         <h3>{name}</h3>
@@ -128,4 +131,4 @@ const FoodCard = ({ id, name, picture, regular_price, sale_price }) => {
   );
 };
 
-export default FoodCard;
+export default connect(null, { addToCart })(FoodCard);

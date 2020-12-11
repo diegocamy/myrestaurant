@@ -8,7 +8,7 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case actionTypes.ADD_TO_CART:
       //check if item is already in cart
-      const exist = state.includes(action.payload.id);
+      const exist = state.cart.find((item) => item.id === action.payload.id);
 
       if (!exist) {
         return {
@@ -18,11 +18,13 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
       } else {
         return {
           ...state,
-          cart: state.cart.filter((item) =>
-            item.id === action.payload.id
-              ? { ...item, qty: (item.qty += 1) }
-              : item
-          ),
+          cart: state.cart.filter((item) => {
+            if (item.id === action.payload.id) {
+              return { ...item, qty: item.qty++ };
+            }
+
+            return item;
+          }),
         };
       }
     case actionTypes.REMOVE_FROM_CART:

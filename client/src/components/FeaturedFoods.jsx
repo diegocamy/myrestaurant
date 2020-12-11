@@ -64,16 +64,7 @@ const FeaturedFoods = () => {
       <h3 className="title">Destacados del Mes</h3>
       <div className="card-container">
         {data.map((food) => {
-          return (
-            <FoodCard
-              key={food.id}
-              id={food.id}
-              name={food.name}
-              picture={food.picture}
-              regular_price={food.regular_price}
-              sale_price={food.sale_price}
-            />
-          );
+          return <FoodCard key={food.id} item={food} />;
         })}
       </div>
     </FeaturedSection>

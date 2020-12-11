@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
 const NavContainer = styled.div`
@@ -140,12 +141,20 @@ const NavContainer = styled.div`
   }
 `;
 
-const Navbar = ({ location: { pathname } }) => {
+const Navbar = ({ history, location: { pathname }, cart }) => {
   const [isShowingLinks, setIsShowingLinks] = useState(false);
+  const [itemsInCart, setItemsInCart] = useState(0);
 
   useEffect(() => {
     setIsShowingLinks(false);
   }, [pathname]);
+
+  useEffect(() => {
+    let numOfItems = 0;
+    cart.forEach((item) => (numOfItems += item.qty));
+
+    setItemsInCart(numOfItems);
+  }, [cart]);
 
   return (
     <NavContainer>
@@ -156,11 +165,13 @@ const Navbar = ({ location: { pathname } }) => {
           </Link>
         </h2>
       </div>
-      <div className="cart">
+      <div className="cart" onClick={() => history.push("/cart")}>
         <i className="fas fa-shopping-cart"></i>
-        <div className="number">
-          <p>3</p>
-        </div>
+        {itemsInCart > 0 && (
+          <div className="number">
+            <p>{itemsInCart}</p>
+          </div>
+        )}
       </div>
       <div className="navLinks">
         <ul>
@@ -216,4 +227,10 @@ const Navbar = ({ location: { pathname } }) => {
   );
 };
 
-export default withRouter(Navbar);
+const mapStateToProps = (state) => {
+  return {
+    cart: state.cart.cart,
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(Navbar));

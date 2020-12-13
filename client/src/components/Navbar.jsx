@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { NavLink, Link, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const NavContainer = styled.div`
@@ -141,9 +141,10 @@ const NavContainer = styled.div`
   }
 `;
 
-const Navbar = ({ history, location: { pathname }, cart }) => {
+const Navbar = ({ history, location: { pathname } }) => {
   const [isShowingLinks, setIsShowingLinks] = useState(false);
   const [itemsInCart, setItemsInCart] = useState(0);
+  const cart = useSelector((state) => state.cart.cart);
 
   useEffect(() => {
     setIsShowingLinks(false);
@@ -227,10 +228,4 @@ const Navbar = ({ history, location: { pathname }, cart }) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    cart: state.cart.cart,
-  };
-};
-
-export default withRouter(connect(mapStateToProps)(Navbar));
+export default withRouter(Navbar);

@@ -14,10 +14,16 @@ export const removeFromCart = (id) => {
   };
 };
 
-export const adjusQuantity = (id, qty) => {
+export const increaseQuantity = (id) => {
   return {
-    type: actionTypes.ADJUST_QUANTITY,
+    type: actionTypes.INCREASE_QUANTITY,
     payload: id,
-    qty,
+  };
+};
+
+export const decreaseQuantity = (id) => {
+  return {
+    type: actionTypes.DECREASE_QUANTITY,
+    payload: id,
   };
 };

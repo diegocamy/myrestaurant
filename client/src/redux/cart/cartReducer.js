@@ -32,14 +32,25 @@ export const cartReducer = (state = INITIAL_STATE, action) => {
         ...state,
         cart: state.cart.filter((item) => item.id !== action.payload),
       };
-    case actionTypes.ADJUST_QUANTITY:
+    case actionTypes.INCREASE_QUANTITY:
       return {
         ...state,
-        cart: state.cart.filter((item) => {
-          if (item.qty + action.qty >= 1) {
-            return { ...item, qty: (item.qty += action.qty) };
+        cart: state.cart.map((item) => {
+          if (item.id === action.payload) {
+            return { ...item, qty: item.qty + 1 };
           }
-
+          return item;
+        }),
+      };
+    case actionTypes.DECREASE_QUANTITY:
+      return {
+        ...state,
+        cart: state.cart.map((item) => {
+          if (item.id === action.payload) {
+            if (item.qty > 1) {
+              return { ...item, qty: item.qty - 1 };
+            }
+          }
           return item;
         }),
       };

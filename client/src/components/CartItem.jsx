@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useDispatch } from "react-redux";
+import { increaseQuantity, decreaseQuantity } from "../redux/cart/cartActions";
 
 const Item = styled.div`
   display: grid;
@@ -72,6 +74,8 @@ const Item = styled.div`
 `;
 
 const CartItem = ({ item }) => {
+  const dispatch = useDispatch();
+  console.log(`render item ${item.id}`);
   return (
     <Item>
       <div className="description">
@@ -79,9 +83,9 @@ const CartItem = ({ item }) => {
         <p>{item.name}</p>
       </div>
       <div className="buttons">
-        <button>-</button>
+        <button onClick={() => dispatch(decreaseQuantity(item.id))}>-</button>
         <p>{item.qty}</p>
-        <button>+</button>
+        <button onClick={() => dispatch(increaseQuantity(item.id))}>+</button>
       </div>
       <p>$ {item.sale_price ? item.sale_price : item.regular_price}</p>
       <p>

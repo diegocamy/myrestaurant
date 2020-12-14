@@ -5,6 +5,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+body {
+  margin-top: 55px;
+}
+
 .shadow {
   box-shadow: 5px 4px 14px -3px rgba(95, 95, 95, 0.75);
   -webkit-box-shadow: 5px 4px 14px -3px rgba(95, 95, 95, 0.75);

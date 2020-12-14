@@ -1,7 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { increaseQuantity, decreaseQuantity } from "../redux/cart/cartActions";
+import {
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart,
+} from "../redux/cart/cartActions";
 
 const Item = styled.div`
   display: grid;
@@ -11,6 +15,25 @@ const Item = styled.div`
   align-items: center;
   text-align: center;
   background-color: white;
+  position: relative;
+
+  .delete-button {
+    position: absolute;
+    background-color: crimson;
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 10px;
+    margin-top: 5px;
+    margin-right: 5px;
+    top: 0;
+    right: 0%;
+    display: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
   .description {
     display: flex;
@@ -49,9 +72,19 @@ const Item = styled.div`
     }
   }
 
+  &:hover {
+    button.delete-button {
+      display: block;
+    }
+  }
+
   @media only screen and (max-width: 700px) {
     font-size: 0.8rem;
     grid-template-columns: auto 19% 19% 19%;
+
+    button.delete-button {
+      display: block;
+    }
 
     .description {
       margin-left: none;
@@ -77,6 +110,12 @@ const CartItem = ({ item }) => {
   const dispatch = useDispatch();
   return (
     <Item>
+      <button
+        className="delete-button"
+        onClick={() => dispatch(removeFromCart(item.id))}
+      >
+        X
+      </button>
       <div className="description">
         <img src={item.picture} alt={item.name} />
         <p>{item.name}</p>

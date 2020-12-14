@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 import CartItem from "../components/CartItem";
 
 const CartPage = styled.div`
   background-color: #f1f1f1;
+  min-height: calc(100vh - 55px);
 `;
 
 const Container = styled.div`
   margin: auto;
   padding-top: 30px;
   max-width: 1100px;
-  min-height: 100vh;
 
   @media only screen and (max-width: 700px) {
     padding-left: 10px;
@@ -110,6 +111,31 @@ const CartTotal = styled.div`
   }
 `;
 
+const NoArticles = styled.div`
+  text-align: center;
+
+  h2 {
+    margin: 35px auto;
+  }
+
+  a {
+    text-decoration: none;
+    background-color: crimson;
+    color: white;
+    font-weight: bold;
+    padding: 15px 25px;
+    border-radius: 25px;
+    text-transform: uppercase;
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #d83153;
+      transform: scale(1.5);
+    }
+  }
+`;
+
 const Cart = () => {
   const cart = useSelector((state) => state.cart.cart);
   const [subtotal, setSubtotal] = useState(0);
@@ -138,6 +164,19 @@ const Cart = () => {
   useEffect(() => {
     setIva(calculateIva(subtotal));
   }, [subtotal, setIva]);
+
+  if (cart.length === 0) {
+    return (
+      <CartPage>
+        <Container>
+          <NoArticles>
+            <h2>No tiene artículos en el carrito</h2>
+            <Link to="/menu">Menu</Link>
+          </NoArticles>
+        </Container>
+      </CartPage>
+    );
+  }
 
   return (
     <CartPage>

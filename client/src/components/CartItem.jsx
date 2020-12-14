@@ -75,7 +75,6 @@ const Item = styled.div`
 
 const CartItem = ({ item }) => {
   const dispatch = useDispatch();
-  console.log(`render item ${item.id}`);
   return (
     <Item>
       <div className="description">

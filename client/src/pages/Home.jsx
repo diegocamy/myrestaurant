@@ -5,6 +5,7 @@ import styled from "styled-components";
 
 import BigSlide from "../components/BigSlide";
 import FeaturedFoods from "../components/FeaturedFoods";
+import ProductCategories from "../components/ProductCategories";
 
 import pizza from "../assets/slides/pizza.jpg";
 import burger from "../assets/slides/burger.jpg";
@@ -62,6 +63,7 @@ const Home = () => {
           />
         </SwiperSlide>
       </Swiper>
+      <ProductCategories withMenuButton />
       <FeaturedFoods />
     </HomePage>
   );

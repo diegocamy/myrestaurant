@@ -39,7 +39,8 @@ const data = [
 
 const FeaturedSection = styled.div`
   text-align: center;
-  padding: 30px;
+  background-color: #f0f0f0;
+  padding: 100px 0;
 
   .title {
     margin: auto;
@@ -51,10 +52,20 @@ const FeaturedSection = styled.div`
   }
 
   .card-container {
-    margin: 20px;
-    display: flex;
+    margin: 20px auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(4, 270px);
+    justify-items: center;
     justify-content: center;
-    flex-wrap: wrap;
+    align-items: center;
+
+    @media only screen and (max-width: 1100px) {
+      grid-template-columns: repeat(2, 270px);
+    }
+    @media only screen and (max-width: 540px) {
+      grid-template-columns: 270px;
+    }
   }
 `;
 

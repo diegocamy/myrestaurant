@@ -59,6 +59,32 @@ const Slide = styled.div`
         transform: scale(1.1);
       }
     }
+
+    @media only screen and (max-width: 1200px) {
+      h2 {
+        font-size: 4rem;
+      }
+
+      p {
+        font-size: 1.3rem;
+      }
+
+      button {
+        font-size: 1.1rem;
+      }
+    }
+
+    @media only screen and (max-width: 660px) {
+      h2 {
+        font-size: 2rem;
+      }
+      p {
+        font-size: 1rem;
+      }
+      button {
+        font-size: 0.8rem;
+      }
+    }
   }
 `;
 

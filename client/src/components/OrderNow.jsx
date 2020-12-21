@@ -58,7 +58,7 @@ const BackgroundArea = styled.div`
       );
     }
 
-    @media only screen and (max-width: 800px){
+    @media only screen and (max-width: 800px) {
       background: -moz-linear-gradient(
         180deg,
         rgba(2, 0, 36, 0) 20%,
@@ -74,7 +74,6 @@ const BackgroundArea = styled.div`
         rgba(2, 0, 36, 0) 20%,
         rgb(220, 20, 60) 60%
       );
-    }
     }
   }
 

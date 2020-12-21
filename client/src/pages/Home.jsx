@@ -13,6 +13,7 @@ import burger from "../assets/slides/burger.jpg";
 import dessert from "../assets/slides/dessert.jpg";
 
 import "swiper/swiper.scss";
+import Testimonials from "../components/Testimonials";
 
 SwiperCore.use([Autoplay, Pagination]);
 
@@ -67,6 +68,7 @@ const Home = () => {
       <ProductCategories withMenuButton />
       <OrderNow />
       <FeaturedFoods />
+      <Testimonials />
     </HomePage>
   );
 };

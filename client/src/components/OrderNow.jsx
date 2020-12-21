@@ -39,6 +39,49 @@ const BackgroundArea = styled.div`
       rgb(220, 20, 60) 60%
     );
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#ff0000",GradientType=1);
+
+    @media only screen and (max-width: 1100px) {
+      background: -moz-linear-gradient(
+        180deg,
+        rgba(2, 0, 36, 0) 20%,
+        rgb(220, 20, 60) 80%
+      );
+      background: -webkit-linear-gradient(
+        180deg,
+        rgba(2, 0, 36, 0) 20%,
+        rgb(220, 20, 60) 80%
+      );
+      background: linear-gradient(
+        180deg,
+        rgba(2, 0, 36, 0) 20%,
+        rgb(220, 20, 60) 80%
+      );
+    }
+
+    @media only screen and (max-width: 800px){
+      background: -moz-linear-gradient(
+        180deg,
+        rgba(2, 0, 36, 0) 20%,
+        rgb(220, 20, 60) 60%
+      );
+      background: -webkit-linear-gradient(
+        180deg,
+        rgba(2, 0, 36, 0) 20%,
+        rgb(220, 20, 60) 60%
+      );
+      background: linear-gradient(
+        180deg,
+        rgba(2, 0, 36, 0) 20%,
+        rgb(220, 20, 60) 60%
+      );
+    }
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    height: fit-content;
+    background-size: auto;
+    background-position-y: 0;
   }
 `;
 
@@ -49,6 +92,10 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media only screen and (max-width: 1100px) {
+    flex-direction: column;
+  }
 `;
 
 const CardsContainer = styled.div`
@@ -61,6 +108,19 @@ const CardsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+
+    @media only screen and (max-width: 1100px) {
+      flex-direction: row;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    flex-direction: column;
+    margin-top: 55px;
+    .cardColumn {
+      flex-direction: column;
+      align-items: center;
+    }
   }
 `;
 
@@ -113,6 +173,23 @@ const TextContainer = styled.div`
       background-color: white;
       color: red;
     }
+  }
+
+  @media only screen and (max-width: 1100px) {
+    text-align: center;
+    width: 70%;
+    hr {
+      margin: 10px auto;
+    }
+
+    button {
+      margin: 25px auto;
+    }
+  }
+
+  @media only screen and (max-width: 800px) {
+    width: 100%;
+    margin-bottom: 55px;
   }
 `;
 

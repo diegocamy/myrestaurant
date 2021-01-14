@@ -1,12 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { Swiper, SwiperSlide } from "swiper/react";
-import SwiperCore, { Autoplay } from "swiper";
 
 import ingredients from "../assets/backgrounds/ingredients.jpg";
 import TestimonialCard from "./TestimonialCard";
-
-SwiperCore.use([Autoplay]);
 
 const BackgroundArea = styled.div`
   height: 450px;
@@ -31,11 +27,14 @@ const BackgroundArea = styled.div`
     z-index: 4;
     background-color: rgba(0, 0, 0, 0.4);
   }
+
+  @media only screen and (max-width: 1200px) {
+    height: fit-content;
+  }
 `;
 
 const Container = styled.div`
   max-width: 1200px;
-  margin: auto;
   position: relative;
   z-index: 5;
   text-align: center;
@@ -45,6 +44,23 @@ const Container = styled.div`
     color: white;
     margin-bottom: 25px;
   }
+
+  .testimonios {
+    display: flex;
+    flex-direction: row;
+  }
+
+  @media only screen and (max-width: 1200px) {
+    margin: 35px auto;
+  }
+
+  @media only screen and (max-width: 1070px) {
+    .testimonios {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
 `;
 
 const Testimonials = () => {
@@ -53,30 +69,11 @@ const Testimonials = () => {
       <div className="overlay" />
       <Container>
         <h3>Testimonios de clientes</h3>
-        <Swiper
-          effect="slide"
-          speed={1200}
-          loop
-          slidesPerView={3}
-          autoplay
-          preloadImages
-        >
-          <SwiperSlide>
-            <TestimonialCard stars={5} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard stars={4.5} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard stars={3.5} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard stars={4} />
-          </SwiperSlide>
-          <SwiperSlide>
-            <TestimonialCard stars={5} />
-          </SwiperSlide>
-        </Swiper>
+        <div className="testimonios">
+          <TestimonialCard stars={5} />
+          <TestimonialCard stars={4.5} />
+          <TestimonialCard stars={3.5} />
+        </div>
       </Container>
     </BackgroundArea>
   );

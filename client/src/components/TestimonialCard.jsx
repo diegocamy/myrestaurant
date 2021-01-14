@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const CardBody = styled.div`
+  margin: 25px;
   position: relative;
   background-color: crimson;
   border-radius: 25px;
@@ -9,6 +10,20 @@ const CardBody = styled.div`
   width: 350px;
   display: flex;
   align-items: center;
+
+  @media only screen and (max-width: 1200px) {
+    margin: 1%;
+  }
+
+  @media only screen and (max-width: 1070px) {
+    width: 70%;
+    height: fit-content;
+    padding: 15px 0;
+  }
+
+  @media only screen and (max-width: 600px) {
+    width: 90%;
+  }
 `;
 
 const Content = styled.div`
@@ -60,7 +75,7 @@ const Content = styled.div`
     z-index: 5;
   }
 
-  h3 {
+  .name {
     font-size: 1.3rem;
     color: white;
     margin-bottom: 10px;
@@ -77,10 +92,10 @@ const generateStars = (numOfStars) => {
       arr.push(<i className="fas fa-star" key={i + Date.now()} />);
       current--;
     } else if (current > 0 && current < 1) {
-      arr.push(<i className="far fa-star" key={i + Date.now()} />);
-      current -= current;
-    } else {
       arr.push(<i className="fas fa-star-half-alt" key={i + Date.now()} />);
+      current = current - current;
+    } else {
+      arr.push(<i className="far fa-star" key={i + Date.now()} />);
     }
   }
 
@@ -98,7 +113,7 @@ const TestimonialCard = ({ stars }) => {
           src="https://colegioclassea.com.br/wp-content/themes/PageLand/assets/img/avatar/avatar.jpg"
           alt="avatar"
         />
-        <h3>John Doe</h3>
+        <h3 className="name">John Doe</h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla nobis
           in, amet quos maxime perspiciatis pariatur dolorem iure totam? Eum.

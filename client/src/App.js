@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 
 import "./App.css";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/cart" component={Cart} />
           <Route component={() => <h1>NOT FOUND</h1>} />
         </Switch>
+        <Footer />
       </>
     </BrowserRouter>
   );

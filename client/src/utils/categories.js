@@ -9,42 +9,42 @@ import tacos from "../assets/categories/tacos.png";
 
 export const categories = [
   {
-    route: "/categories/combo",
+    route: "/menu/combo",
     img: combo,
     name: "Combos",
   },
   {
-    route: "/categories/pizza",
+    route: "/menu/pizza",
     img: pizza,
     name: "Pizzas",
   },
   {
-    route: "/categories/kids",
+    route: "/menu/kids",
     img: kids,
     name: "Niños",
   },
   {
-    route: "/categories/burger",
+    route: "/menu/burger",
     img: burger,
-    name: "burgers",
+    name: "Burgers",
   },
   {
-    route: "/categories/salad",
+    route: "/menu/salad",
     img: salad,
     name: "Ensaladas",
   },
   {
-    route: "/categories/tacos",
+    route: "/menu/tacos",
     img: tacos,
     name: "Tacos",
   },
   {
-    route: "/categories/dessert",
+    route: "/menu/dessert",
     img: dessert,
     name: "Postres",
   },
   {
-    route: "/categories/coffee",
+    route: "/menu/coffee",
     img: coffee,
     name: "Bebidas",
   },

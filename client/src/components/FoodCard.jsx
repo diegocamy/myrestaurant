@@ -11,6 +11,7 @@ const Card = styled.div`
   border-radius: 15px;
   margin: 10px;
   background-color: white;
+  text-align: center;
 
   .top {
     width: 100%;

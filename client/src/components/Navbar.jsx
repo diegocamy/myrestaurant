@@ -188,7 +188,7 @@ const Navbar = ({ history, location: { pathname } }) => {
         <div className="navLinks">
           <ul>
             <li>
-              <NavLink to="/products" activeClassName="active">
+              <NavLink to="/menu" activeClassName="active">
                 Menu
               </NavLink>
             </li>
@@ -213,7 +213,7 @@ const Navbar = ({ history, location: { pathname } }) => {
         <div className={`hamburger-links ${isShowingLinks ? "show" : "hide"}`}>
           <ul>
             <li>
-              <NavLink to="/products" activeClassName="active">
+              <NavLink to="/menu" activeClassName="active">
                 Menu
               </NavLink>
             </li>

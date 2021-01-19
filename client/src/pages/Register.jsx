@@ -32,13 +32,13 @@ const ColoredBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 400px;
-  height: 540px;
+  height: 610px;
   background-color: white;
   z-index: 3;
 
   .top {
     background-color: crimson;
-    height: 35%;
+    height: 31%;
 
     h2 {
       text-align: center;
@@ -59,7 +59,7 @@ const ColoredBox = styled.div`
   }
   .bottom {
     background-color: #fafafa;
-    height: 65%;
+    height: 69%;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
@@ -76,9 +76,9 @@ const ColoredBox = styled.div`
   }
 `;
 
-const LoginBox = styled.div`
+const RegisterBox = styled.div`
   position: absolute;
-  top: 27%;
+  top: 23%;
   left: 0;
   right: 0;
   margin: auto;
@@ -186,40 +186,7 @@ const LoginBox = styled.div`
   }
 `;
 
-const RegisterBox = styled.div`
-  margin: 15px auto;
-  z-index: 2;
-  background-color: white;
-  width: 400px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 15px;
-
-  p {
-    margin-bottom: 5px;
-  }
-
-  .register {
-    text-decoration: none;
-    color: white;
-    background-color: crimson;
-    border: none;
-    border-radius: 3px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    text-align: center;
-    transition: all 300ms ease-in-out;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #ee1742;
-    }
-  }
-`;
-
-const Login = () => {
+const Register = () => {
   return (
     <BackGround>
       <div className="overlay"></div>
@@ -228,12 +195,12 @@ const Login = () => {
           <h2>
             <span>my</span>restaurant
           </h2>
-          <h4>Iniciar Sesión</h4>
+          <h4>Registrarse</h4>
         </div>
         <div className="bottom">
-          <Link to="/forgot-password">Olvidaste tu contraseña?</Link>
+          <Link to="/login">Ya tienes una cuenta?</Link>
         </div>
-        <LoginBox className="shadow">
+        <RegisterBox className="shadow">
           <div className="google">
             <div className="left">
               <i className="fab fa-google"></i>
@@ -253,20 +220,22 @@ const Login = () => {
               <i className="fas fa-unlock-alt"></i>
               <input type="password" id="password" placeholder="Contraseña" />
             </div>
+            <div className="input-div">
+              <i className="fas fa-unlock-alt"></i>
+              <input
+                type="password"
+                id="password"
+                placeholder="Repetir Contraseña"
+              />
+            </div>
             <button>
-              Ingresar <i className="fas fa-sign-in-alt"></i>
+              Registrarse <i className="fas fa-sign-in-alt"></i>
             </button>
           </form>
-        </LoginBox>
+        </RegisterBox>
       </ColoredBox>
-      <RegisterBox>
-        <p>Aún no tienes una cuenta?</p>
-        <Link to="/register" className="register">
-          Registrarse
-        </Link>
-      </RegisterBox>
     </BackGround>
   );
 };
 
-export default Login;
+export default Register;

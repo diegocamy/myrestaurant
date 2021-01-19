@@ -11,6 +11,7 @@ const BackGround = styled.div`
   background-position: center;
   z-index: 1;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 800px;
@@ -27,7 +28,6 @@ const BackGround = styled.div`
 `;
 
 const ColoredBox = styled.div`
-  margin: auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -92,6 +92,7 @@ const LoginBox = styled.div`
 
   .google {
     display: flex;
+    justify-content: center;
     align-items: center;
     background-color: #4285f4;
     color: white;
@@ -185,6 +186,32 @@ const LoginBox = styled.div`
   }
 `;
 
+const RegisterBox = styled.div`
+  margin: 15px auto;
+  z-index: 2;
+  background-color: white;
+  width: 400px;
+  text-align: center;
+  padding: 15px;
+
+  button {
+    color: white;
+    background-color: crimson;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    margin-top: 15px;
+    text-align: center;
+    transition: all 300ms ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #ee1742;
+    }
+  }
+`;
+
 const Login = () => {
   return (
     <BackGround>
@@ -225,6 +252,10 @@ const Login = () => {
           </form>
         </LoginBox>
       </ColoredBox>
+      <RegisterBox>
+        <p>Aún no tienes una cuenta?</p>
+        <button>Registrarse</button>
+      </RegisterBox>
     </BackGround>
   );
 };

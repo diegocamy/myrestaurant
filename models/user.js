@@ -5,24 +5,20 @@ const userSchema = new Schema(
   {
     nombre: {
       type: String,
-      required: [true, "Debe ingresar un nombre"],
     },
     email: {
       type: String,
       required: [true, "Debe ingresar un email"],
-      unique,
+      unique: true,
     },
     password: {
       type: String,
       required: [true, "Debe ingresar una contraseña"],
     },
-    direcciones: [
-      { type: String, required: [true, "Debe ingresar una dirección"] },
-    ],
+    direcciones: [{ type: String }],
 
     telefono: {
       type: String,
-      required: [true, "Debe ingresar un número de teléfono"],
     },
   },
   {
@@ -30,6 +26,6 @@ const userSchema = new Schema(
   }
 );
 
-const userModel = mongoose.model("user", userSchema);
+const userModel = mongoose.model("User", userSchema);
 
 module.exports = userModel;

@@ -1,20 +1,34 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const jwt = require("../helpers/jwt");
+const yup = require("yup");
+
+const userSchema = yup.object({
+  email: yup
+    .string()
+    .email("Ingrese un email válido")
+    .required("Debe ingresar un email"),
+  password: yup
+    .string()
+    .min(5, "Debe contener al menos 5 caracteres")
+    .required("Debe ingresar una contraseña"),
+});
 
 module.exports = {
   signup: async (req, res, next) => {
     try {
-      const { email, password, repeated_password } = req.body;
+      const { email, password, repeat_password } = req.body;
+
+      await userSchema.validate({ email, password });
 
       const foundUser = await User.findOne({ email: email });
 
       if (foundUser) {
-        return res.status(400).send("El correo ya está registrado");
+        throw new Error("El correo ya está registrado");
       }
 
-      if (password !== repeated_password) {
-        return res.status(400).send("Las contraseñas no coinciden");
+      if (password !== repeat_password) {
+        throw new Error("Las contraseñas no coinciden");
       }
 
       const salt = await bcrypt.genSalt(12);
@@ -31,7 +45,7 @@ module.exports = {
 
       res.send(token);
     } catch (error) {
-      res.send(error);
+      next(error);
     }
   },
 };

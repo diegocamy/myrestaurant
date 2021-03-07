@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { GoogleLogin } from "react-google-login";
 
 import friends from "../assets/backgrounds/friends.jpg";
 
@@ -219,6 +220,8 @@ const RegisterBox = styled.div`
   }
 `;
 
+const responseGoogle = (response) => console.log(response);
+
 const Login = () => {
   return (
     <BackGround>
@@ -234,12 +237,32 @@ const Login = () => {
           <Link to="/forgot-password">Olvidaste tu contraseña?</Link>
         </div>
         <LoginBox className="shadow">
-          <div className="google">
+          <GoogleLogin
+            clientId="188084948421-ubh62q9d8qf3531c8s9raq2c5amcrtfp.apps.googleusercontent.com"
+            buttonText="Usando Google"
+            icon={false}
+            render={(renderProps) => {
+              return (
+                <div className="google" onClick={renderProps.onClick}>
+                  <div className="left">
+                    <i className="fab fa-google"></i>
+                  </div>
+                  <p>Usando Google</p>
+                </div>
+              );
+            }}
+            className="google"
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+          />
+
+          {/* <div className="google">
             <div className="left">
               <i className="fab fa-google"></i>
             </div>
             <p>Usando Google</p>
-          </div>
+          </div> */}
           <div className="divider">
             <hr />
             <p>o</p>

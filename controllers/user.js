@@ -48,4 +48,30 @@ module.exports = {
       next(error);
     }
   },
+  loginWithEmail: async (req, res, next) => {
+    try {
+      const { email, password } = req.body;
+
+      const foundUser = await User.findOne({ email });
+
+      if (!foundUser) {
+        throw new Error("Email o contraseña incorrecta");
+      }
+
+      const correctPassword = await bcrypt.compare(
+        password,
+        foundUser.password
+      );
+
+      if (!correctPassword) {
+        throw new Error("Email o contraseñá incorrecta");
+      }
+
+      const token = jwt.signToken(foundUser);
+
+      res.send(token);
+    } catch (error) {
+      next(error);
+    }
+  },
 };

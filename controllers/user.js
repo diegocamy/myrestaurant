@@ -136,4 +136,20 @@ module.exports = {
       next(error);
     }
   },
+  logout: (req, res, next) => {
+    res
+      .cookie("jwt", "", {
+        httpOnly: true,
+        expires: new Date(0),
+      })
+      .send();
+  },
+  users: async (req, res, next) => {
+    try {
+      const allUsers = await User.find();
+      res.json(allUsers);
+    } catch (error) {
+      next(error);
+    }
+  },
 };

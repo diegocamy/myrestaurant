@@ -8,5 +8,8 @@ route.post("/login", userController.loginWithEmail);
 route.post("/googlelogin", userController.loginWithGoogle);
 route.get("/logout", userController.logout);
 route.get("/users", auth, userController.users);
+route.get("/me", auth, (req, res) => {
+  res.send(req.user);
+});
 
 module.exports = route;

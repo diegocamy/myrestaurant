@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { GoogleLogin } from "react-google-login";
+import { useDispatch } from "react-redux";
+import { loginWithGoogle } from "../redux/user/userActions";
 
 import friends from "../assets/backgrounds/friends.jpg";
 
@@ -220,9 +222,14 @@ const RegisterBox = styled.div`
   }
 `;
 
-const responseGoogle = (response) => console.log(response);
+const Login = ({ history }) => {
+  const dispatch = useDispatch();
 
-const Login = () => {
+  const responseGoogle = async (response) => {
+    const { tokenId } = await response;
+    dispatch(loginWithGoogle(history, tokenId));
+  };
+
   return (
     <BackGround>
       <div className="overlay"></div>
@@ -257,12 +264,6 @@ const Login = () => {
             cookiePolicy={"single_host_origin"}
           />
 
-          {/* <div className="google">
-            <div className="left">
-              <i className="fab fa-google"></i>
-            </div>
-            <p>Usando Google</p>
-          </div> */}
           <div className="divider">
             <hr />
             <p>o</p>

@@ -9,7 +9,7 @@ instance.interceptors.response.use(
   (res) => res,
   (err) => {
     //error message: err.response.data.message
-    if (err.response.status === 401) {
+    if (err.response.status && err.response.status === 401) {
       //log user off
       console.log("unauthhhh");
     }

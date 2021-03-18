@@ -9,13 +9,22 @@ export const loginWithGoogle = (history, tokenId) => async (dispatch) => {
   try {
     dispatch({ type: GOOGLE_LOGIN_STARTED, payload: null });
     await api.post("/user/googlelogin", { tokenId });
-    const { data: user_id } = await api.get("/user/me");
-    dispatch({ type: GOOGLE_LOGIN_SUCCESS, payload: user_id });
+
+    const { data: loggedUser } = await api.get("/user/me");
+    dispatch({ type: GOOGLE_LOGIN_SUCCESS, payload: loggedUser });
+
     history.push("/dashboard");
   } catch (error) {
-    dispatch({
-      type: GOOGLE_LOGIN_ERROR,
-      payload: error.response.data.message,
-    });
+    if (error.response) {
+      dispatch({
+        type: GOOGLE_LOGIN_ERROR,
+        payload: error.response.data.message,
+      });
+    } else {
+      dispatch({
+        type: GOOGLE_LOGIN_ERROR,
+        payload: error.message,
+      });
+    }
   }
 };

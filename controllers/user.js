@@ -98,9 +98,10 @@ module.exports = {
       const foundUser = await User.findOne({ email });
 
       if (!foundUser) {
-        //crear nuevo usuario y logearlo
+        //create the new user and log it in
 
-        //genera un password aleatorio ya que el modelo User tiene el campo password como required
+        //generates a random password because the User model requires
+        //to have something on the password field
         const password =
           Math.random().toString(36).slice(2) +
           Math.random().toString(36).slice(2);
@@ -110,7 +111,7 @@ module.exports = {
 
         const newUser = await User.create({
           email,
-          name,
+          nombre: name,
           password: hashedPassword,
         });
 
@@ -148,6 +149,14 @@ module.exports = {
     try {
       const allUsers = await User.find();
       res.json(allUsers);
+    } catch (error) {
+      next(error);
+    }
+  },
+  me: async (req, res, next) => {
+    try {
+      const loggedUser = await User.findById(req.user).select(["-password"]);
+      res.send(loggedUser);
     } catch (error) {
       next(error);
     }

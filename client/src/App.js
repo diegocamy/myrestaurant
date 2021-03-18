@@ -3,6 +3,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import PrivateRoute from "./components/PrivateRoute";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
 import Product from "./pages/Product";
@@ -26,6 +27,10 @@ function App() {
           <Route path="/register" component={Register} />
           <Route path="/menu/:category" component={Category} />
           <Route path="/product/:id" component={Product} />
+          <PrivateRoute
+            path="/dashboard"
+            component={() => <h1>DASHBOARD BRO</h1>}
+          />
           <Route component={() => <h1>NOT FOUND</h1>} />
         </Switch>
         <Footer />

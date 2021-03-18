@@ -16,9 +16,12 @@ const userSchema = new Schema(
       required: [true, "Debe ingresar una contraseña"],
     },
     direcciones: [{ type: String }],
-
     telefono: {
       type: String,
+    },
+    perfilCompleto: {
+      type: Boolean,
+      default: false,
     },
   },
   {
